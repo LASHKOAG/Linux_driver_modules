@@ -1,0 +1,2 @@
+/home/oztm/my_module/test_module_1.o
+
