@@ -1,0 +1,1 @@
+cmd_/home/oztm/Modules/Hello.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/oztm/Modules/Hello.ko /home/oztm/Modules/Hello.o /home/oztm/Modules/Hello.mod.o;  true
