@@ -1,0 +1,45 @@
+gcc test.c -o test.out
+
+./test.out
+
+======
+create Makefile
+
+obj-m := simple_module.o
+
+->
+make -C /lib/modules/$(uname -r)/build M=$PWD modules
+
+----------------------
+oztm@oztm:~/my_module/my_module_2$ make -C /lib/modules/$(uname -r)/build M=$PWD modules
+make: Entering directory '/usr/src/linux-headers-5.4.0-48-generic'
+  CC [M]  /home/oztm/my_module/my_module_2/simple_module.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+WARNING: modpost: missing MODULE_LICENSE() in /home/oztm/my_module/my_module_2/simple_module.o
+see include/linux/module.h for more information
+  CC [M]  /home/oztm/my_module/my_module_2/simple_module.mod.o
+  LD [M]  /home/oztm/my_module/my_module_2/simple_module.ko
+make: Leaving directory '/usr/src/linux-headers-5.4.0-48-generic'
+oztm@oztm:~/my_module/my_module_2$ 
+-----------------------
+
+sudo insmod ./simple_module.ko
+
+lsmod
+
+---------
+for delete your module
+
+sudo rmmod simple_module
+----------
+
+ls /var/log/syslog
+
+sudo tail -f /var/log/syslog
+
+---------
+->
+make -C /lib/modules/$(uname -r)/build M=$PWD modules clean
+
+ls *.ko
